@@ -24,6 +24,7 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] 
 git clone https://github.com/alacritty/alacritty.git
 cd alacritty
 cargo build --release
+ln -s ./dotfiles/alacritty ~/.config/alacritty
 ```
 
 for post install notes, see [here](https://github.com/alacritty/alacritty/blob/master/INSTALL.md)
@@ -50,6 +51,7 @@ curl -sS https://starship.rs/install.sh | sh
 eval "$(starship init zsh)"
 git clone https://github.com/choetech160/dotfiles
 ln -s ./dotfiles/starship.toml ~/.config/starship.toml
+ln -s ./dotfiles/zshrc/zshrc ~/.zshrc
 ```
 
 # Install a password manager
