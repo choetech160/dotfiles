@@ -1,3 +1,6 @@
+These are my dotfiles. Mostly for me, when switching to new laptop or reinstalling from scratch, so that said process is more streamlined.
+I'll create a script at some point, so that you can either execute it and have everything like me (not advised btw).
+
 # Install Signal
 
 > NOTE: These instructions only work for 64-bit Debian-based
