@@ -113,3 +113,4 @@ require("lazy").setup({ { import = "j.plugins" }, { import = "j.plugins.lsp" } }
 		"tpope/vim-fugitive",
 	},
 })
+
