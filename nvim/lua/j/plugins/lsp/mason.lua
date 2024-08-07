@@ -27,6 +27,7 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
+        "bashls",
         "tsserver",
         "html",
         "cssls",
@@ -50,6 +51,9 @@ return {
         "black", -- python formatter
         "pylint", -- python linter
         "eslint_d", -- js linter
+        "goimports",
+        "gofumpt",
+        "shfmt",
       },
     })
   end,

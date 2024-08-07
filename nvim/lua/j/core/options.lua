@@ -36,3 +36,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
+
+opt.backup = false
+opt.writebackup = false
+opt.swapfile = false

@@ -245,5 +245,10 @@ return {
         },
       },
     })
+    lspconfig["bashls"].setup({
+      settings = {
+      filetypes = { "sh", "zsh" },
+      }
+    })
   end,
 }
