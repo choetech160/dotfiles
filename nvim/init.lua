@@ -1,2 +1,2 @@
-require("j.lazy-setups")
-require("j.core")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
