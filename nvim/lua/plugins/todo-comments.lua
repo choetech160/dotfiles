@@ -7,9 +7,14 @@ return {
       NICE = {
         icon = "🔆",
         color = "#8BC34A", -- Darker green color
-        alt = { "FEATURE", "IDEA", "SUGGESTION" },
+        alt = { "FEATURE", "SUGGESTION" },
       },
       REPEAT = { icon = "🌀", color = "#C3B1E1", alt = { "REFACTOR", "DUPLICATE", "REDUNDANT" } },
+      IDEAS = {
+        icon = "💡",
+        color = "#FFD700",
+        alt = { "SOLUTION", "CONCEPT", "POSSIBLE_SOLUTION" },
+      },
     },
   },
 }
