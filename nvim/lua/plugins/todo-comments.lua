@@ -1,9 +1,6 @@
 return {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-<<<<<<< Updated upstream
-  opts = {},
-=======
   keys = {
 
     { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Search TODOs (Telescope)" },
@@ -25,5 +22,4 @@ return {
       },
     },
   },
->>>>>>> Stashed changes
 }
