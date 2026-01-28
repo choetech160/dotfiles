@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.augment_workspace_folders = {
   vim.fn.expand("~/Projects/SCFJS_dev/"),
   vim.fn.expand("~/Projects/PORTFOLIO_Room/"),
+  vim.fn.expand("~/Projects/OCI-Legendary-Barnacle/"),
 }
 
 require("lazy").setup({

@@ -29,12 +29,17 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 -- keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
+-- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+-- keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+-- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
+-- keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+-- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+-- fzf instead of telescope :
+keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find Files" })
+keymap.set("n", "<leader>fs", "<cmd>FzfLua live_grep<cr>", { desc = "Live Grep" })
+keymap.set("n", "<leader>fc", "<cmd>FzfLua grep_cword<cr>", { desc = "Find String under Cursor" })
+keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { desc = "List Buffers" })
+keymap.set("n", "<leader>fh", "<cmd>FzfLua help_tags<cr>", { desc = "Help Tags" })
 -- Noice
 keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>") -- dismiss all Noice messages
 
