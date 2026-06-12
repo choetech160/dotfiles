@@ -1,82 +1,132 @@
-These are my dotfiles. Mostly for me, when switching to new laptop or reinstalling from scratch, so that said process is more streamlined.
-I'll create a script at some point, so that you can either execute it and have everything like me (not advised btw).
+# 🚀 Dotfiles and System Configuration
+
+Welcome to my personal dotfiles repository. This project serves as a centralized way to manage my configuration files (dotfiles) across different Linux machines (primarily targeted towards Debian-based systems like Pop!_OS and Ubuntu). 
+
+By utilizing these dotfiles and the provided installation script, setting up a new environment is streamlined, consistent, and much less tedious.
+
+## 🛠 Prerequisites
+
+Before running the automated installation script, ensure you have basic tools installed:
+```bash
+sudo apt update && sudo apt install -y git curl
+```
+
+## 🚀 Automated Installation
+
+To set up everything automatically, simply clone this repository and execute the installation script. The script is designed to be safe, creating backups of existing configurations before creating new symbolic links.
+
+Bash
+
+```bash
+git clone [https://github.com/choetech160/dotfiles.git](https://github.com/choetech160/dotfiles.git) ~/dotfiles
+cd ~/dotfiles
+chmod +x install_script.sh
+./install_script.sh
+```
+
+## 📦 Manual Installation & Application Details
+
+If you prefer to install components manually or want to understand what the automated script does, refer to the instructions below.
+
+### 1. Signal Desktop
+
+*Only supports 64-bit Debian-based distributions.*
+
+Bash
+
+```bash
+# Install official public software signing key
+wget -O- [https://updates.signal.org/desktop/apt/keys.asc](https://updates.signal.org/desktop/apt/keys.asc) | gpg --dearmor > signal-desktop-keyring.gpg
+cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+
+# Add repository
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] [https://updates.signal.org/desktop/apt](https://updates.signal.org/desktop/apt) xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
 
 # Install Signal
+sudo apt update && sudo apt install -y signal-desktop
+```
 
-> NOTE: These instructions only work for 64-bit Debian-based
-> Linux distributions such as Ubuntu, Mint etc.
+### 2. Alacritty (Terminal Emulator)
 
-> 1. Install our official public software signing key:
->    `wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+Requires Rust and Cargo to build from source.
 
-      cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null`
-
-> 2. Add our repository to your list of repositories:
+Bash
 
 ```bash
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
-  sudo tee /etc/apt/sources.list.d/signal-xenial.list
-```
+# Clone the repository
+git clone [https://github.com/alacritty/alacritty.git](https://github.com/alacritty/alacritty.git) ~/alacritty
+cd ~/alacritty
 
-> 3. Update your package database and install Signal:
->    sudo apt update && sudo apt install signal-desktop
-
-# Install alacritty
-
-```
-git clone https://github.com/alacritty/alacritty.git
-cd alacritty
+# Build release
 cargo build --release
-ln -s ./dotfiles/alacritty ~/.config/alacritty
+
+# Link configuration
+ln -sfn ~/dotfiles/alacritty ~/.config/alacritty
 ```
 
-for post install notes, see [here](https://github.com/alacritty/alacritty/blob/master/INSTALL.md)
+*For post-install notes, refer to the [official Alacritty installation guide](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).*
 
-# Install oh-my-zsh
+### 3. Zsh & Oh My Zsh
+
+Bash
 
 ```bash
-git clone # need to be done, added starship in there as well
+# Install Zsh
+sudo apt install -y zsh
+
+# Install Oh My Zsh
+sh -c "$(curl -fsSL [https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh](https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh))"
 ```
 
-# Install neovim
+### 4. Starship (Cross-Shell Prompt)
+
+Bash
 
 ```bash
-git clone https://github.com/choetech160/dotfiles
-ln -s ./dotfiles/nvim ~/.config/nvim
+# Install Starship
+curl -sS [https://starship.rs/install.sh](https://starship.rs/install.sh) | sh
+
+# Link configuration
+ln -sfn ~/dotfiles/starship.toml ~/.config/starship.toml
+ln -sfn ~/dotfiles/zshrc/zshrc ~/.zshrc
 ```
 
-# Install starship
+### 5. Neovim
 
-https://starship.rs/guide/
+Bash
 
 ```bash
-curl -sS https://starship.rs/install.sh | sh
-eval "$(starship init zsh)"
-git clone https://github.com/choetech160/dotfiles
-ln -s ./dotfiles/starship.toml ~/.config/starship.toml
-ln -s ./dotfiles/zshrc/zshrc ~/.zshrc
+# Install Neovim (Ensure you have a recent version, e.g., via appimage or unstable PPA)
+sudo apt install -y neovim
+
+# Link configuration
+ln -sfn ~/dotfiles/nvim ~/.config/nvim
 ```
 
-# Install a password manager
+### 6. Tmux
 
-# Install TMUX
+Bash
 
 ```bash
-sudo apt install tmux
-git clone https://github.com/choetech160/dotfiles
-ln -s ./dotfiles/tmux/tmux.conf ~/.tmux.conf
+sudo apt install -y tmux
 
+# Link configuration
+ln -sfn ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ```
 
-```bash
-ctrl-a s -> list sessions
-temux attach -> attach to a session / window
-temux detach -> let temux run in background (attach to re-attach to it)
-ctrl-a c -> create new window
-ctrl-a , -> rename current window
-ctrl-a 0...9 -> select window by number (window id+name are on top by using my config)
-```
+**Custom Keybindings Overview:**
 
-# simplex-chat
+- `ctrl-a s` : List sessions
+- `tmux attach` : Attach to the last session/window
+- `tmux detach` : Send tmux to the background
+- `ctrl-a c` : Create a new window
+- `ctrl-a ,` : Rename the current window
+- `ctrl-a 0...9` : Select a window by number (ID/Name located at the top)
 
-`simplex-chat` to start simplex
+### 7. Simplex Chat
+
+Run `simplex-chat` in your terminal to start the application.
+
+### 8. Password Manager
+
+*(Placeholder: Add your preferred password manager installation steps here, e.g., Bitwarden CLI or 1Password).*
