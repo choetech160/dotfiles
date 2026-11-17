@@ -27,12 +27,7 @@ return {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = {
-<<<<<<< Updated upstream
     { "<leader>st", "<cmd>TodoFzfLua<cr>", desc = "Search TODOs (Fzf)" },
-=======
-
-    { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Search TODOs (Telescope)" },
->>>>>>> Stashed changes
     { "<leader>xT", "<cmd>TodoTrouble<cr>", desc = "TODOs (Trouble Panel)" },
   },
   opts = {
