@@ -1,6 +1,7 @@
 return {
   "augmentcode/augment.vim",
   event = "VeryLazy",
+<<<<<<< Updated upstream
   enabled = false,
 
   keys = {
@@ -10,4 +11,6 @@ return {
     { "<leader>at", "<cmd>Augment chat-toggle<cr>", desc = "Toggle conversation" },
     { "<leader>as", "<cmd>Augment status<cr>", desc = "Get augment status" },
   },
+=======
+>>>>>>> Stashed changes
 }

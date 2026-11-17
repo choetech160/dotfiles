@@ -3,8 +3,11 @@
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.haskell",
+<<<<<<< Updated upstream
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
+=======
+>>>>>>> Stashed changes
     "lazyvim.plugins.extras.lang.svelte",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.typescript",
@@ -12,7 +15,11 @@
     "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "news": {
+<<<<<<< Updated upstream
     "NEWS.md": "11866"
+=======
+    "NEWS.md": "10960"
+>>>>>>> Stashed changes
   },
   "version": 8
 }
